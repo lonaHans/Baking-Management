@@ -1,10 +1,13 @@
 package com.example.bakingmanagement.Entity;
 
+import com.example.bakingmanagement.StockStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -30,5 +33,15 @@ public class Baking {
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
+    @Column(nullable = false)
+    private String location;
+
+    @Column(name = "baking_date", nullable = false)
+    private LocalDate bakingDate;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "stock_status", nullable = false)
+    private StockStatus stockStatus;
 
 }

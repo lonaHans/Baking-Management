@@ -3,6 +3,7 @@ package com.example.bakingmanagement.DTO;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public record BakingRequest(
         @NotBlank(message = "Product name is required")
@@ -14,9 +15,16 @@ public record BakingRequest(
 
         @NotNull(message = "Price is required")
         @Positive(message = "Price must be greater than zero")
-        BigDecimal price,
+        double price,
 
         @PositiveOrZero(message = "Quantity cannot be negative")
-        int quantity
+        int quantity,
+
+        @NotBlank(message = "Location is required")
+        String location,
+
+
+        @NotNull(message = "Baking date is required")
+        LocalDate bakingDate
 ) {
 }
