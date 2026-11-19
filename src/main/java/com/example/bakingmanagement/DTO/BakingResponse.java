@@ -1,6 +1,6 @@
 package com.example.bakingmanagement.DTO;
 
-import com.example.bakingmanagement.StockStatus;
+import com.example.bakingmanagement.Enum.StockStatus;
 
 import java.time.LocalDate;
 

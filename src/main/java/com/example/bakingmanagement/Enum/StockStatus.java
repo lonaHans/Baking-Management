@@ -1,4 +1,4 @@
-package com.example.bakingmanagement;
+package com.example.bakingmanagement.Enum;
 
 public enum StockStatus {
     IN_STOCK,

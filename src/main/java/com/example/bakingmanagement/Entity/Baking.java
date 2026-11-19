@@ -1,6 +1,6 @@
 package com.example.bakingmanagement.Entity;
 
-import com.example.bakingmanagement.StockStatus;
+import com.example.bakingmanagement.Enum.StockStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

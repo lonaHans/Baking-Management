@@ -6,7 +6,7 @@ import com.example.bakingmanagement.Entity.Baking;
 import com.example.bakingmanagement.Exceptions.DuplicateResourceException;
 import com.example.bakingmanagement.Exceptions.ResourceNotFoundException;
 import com.example.bakingmanagement.Respository.BakingRepository;
-import com.example.bakingmanagement.StockStatus;
+import com.example.bakingmanagement.Enum.StockStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,7 +50,7 @@ public class BakingService {
         return bakingRepository.findAll().stream().map(this::mapToResponse).toList();
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public BakingResponse updateProduct(Long id, BakingRequest request){
         Baking baking = bakingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
@@ -69,6 +69,16 @@ public class BakingService {
         return mapToResponse(savedBaking);
 
     }
+
+    @Transactional
+    public void deleteProduct(Long id){
+        Baking baking = bakingRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+
+        bakingRepository.delete(baking);
+
+    }
+
 
     private StockStatus calculateStatus(int quantity){
         if (quantity == 0) {

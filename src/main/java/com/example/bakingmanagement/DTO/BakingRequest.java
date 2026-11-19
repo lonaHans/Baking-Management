@@ -25,6 +25,7 @@ public record BakingRequest(
 
 
         @NotNull(message = "Baking date is required")
+        @FutureOrPresent(message = "Baking date can only be today or a date in future")
         LocalDate bakingDate
 ) {
 }
