@@ -50,6 +50,13 @@ public class BakingService {
         return bakingRepository.findAll().stream().map(this::mapToResponse).toList();
     }
 
+    @Transactional(readOnly = true)
+    public List<BakingResponse> getProductsByCategory(String category){
+
+        List<Baking> products = bakingRepository.getProductByCategoryIgnoreCase(category);
+        return products.stream().map(this::mapToResponse).toList();
+    }
+
     @Transactional
     public BakingResponse updateProduct(Long id, BakingRequest request){
         Baking baking = bakingRepository.findById(id)

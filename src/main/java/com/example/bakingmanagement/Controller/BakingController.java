@@ -32,6 +32,11 @@ public class BakingController {
         return ResponseEntity.ok(bakingService.getAllProducts());
     }
 
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<BakingResponse>> getProductByCategory(@PathVariable String category){
+        return ResponseEntity.ok(bakingService.getProductsByCategory(category));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<BakingResponse> updateProduct(@PathVariable Long id, @Valid @RequestBody BakingRequest request){
         return ResponseEntity.ok(bakingService.updateProduct(id,request));
